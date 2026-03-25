@@ -5,7 +5,7 @@ import "../styles/StackScroll.css";
 
 import Digi from "../assets/DM.jpeg";
 import Content from "../assets/Content.jpeg";
-import SocialMedia from "../assets/Social media.jpeg";
+import SocialMedia from "../assets/social-media.jpeg";
 import Ads from "../assets/Ads.jpeg";
 import Web from "../assets/Web.jpeg"; 
 

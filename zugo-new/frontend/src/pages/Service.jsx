@@ -14,7 +14,7 @@ import ORM from "../assets/ORM.jpeg";
 import PayAds from "../assets/Pay Ads.jpeg";
 import perform from "../assets/perfm.jpeg";
 import Portfolio from "../assets/Portfolio.jpeg";
-import SocialMedia from "../assets/Social Media.jpeg";
+import SocialMedia from "../assets/social-media.jpeg";
 import SEO from "../assets/SEO.jpeg";
 import SMK from "../assets/SMK.jpeg";
 import Wtsapp from "../assets/Whtapp.jpeg";
