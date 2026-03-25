@@ -10,10 +10,11 @@ function Clients() {
 
 const [logos,setLogos] = useState([]);
 const rowsRef = useRef([]);
+const BASE_URL = "https://zugo-new-1-oavu.onrender.com";
 
 useEffect(()=>{
 
-axios.get("http://localhost:5000/api/clients")
+axios.get(`${BASE_URL}/api/clients`)
 .then(res=>{
 setLogos(res.data);
 });
@@ -71,10 +72,12 @@ ref={el => rowsRef.current[rowIndex] = el}
 >
 
 {row.map((item)=>(
+
+
 <img
-key={item._id}
-src={`http://localhost:5000/uploads/${item.logo}`}
-alt="client"
+  key={item._id}
+  src={`${BASE_URL}/uploads/${item.logo}`}
+  alt="client"
 />
 ))}
 

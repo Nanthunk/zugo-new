@@ -17,9 +17,9 @@ const Footer = () => {
         <div className="footer-nav">
           <h4>Navigation</h4>
           <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/service">Services</Link>
+          <Link to="/packages">Packages</Link>
+          <Link to="/works">Works</Link>
         </div>
 
         

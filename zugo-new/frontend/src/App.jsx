@@ -169,7 +169,7 @@ function HomePage() {
              <div className="contact-item">
                <Mail size={18} />
                <a href="mailto:zugoprivatelimited@gmail.com">
-                zugoprivatelimited@gmail.com
+                zugochairman@gmail.com
                </a>
              </div>
 
