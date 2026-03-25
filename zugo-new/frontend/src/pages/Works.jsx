@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from "react";
+import "../styles/Works.css";
+
+function Works() {
+
+  const [works,setWorks] = useState([]);
+  const [category,setCategory] = useState("Real Estate Marketing");
+
+  const categories = [
+    "Real Estate Marketing",
+    "Website Design",
+    "Graphics Design",
+    "Reels",
+    "Others"
+  ];
+
+  // LOAD WORKS
+  useEffect(() => {
+
+    fetch("http://localhost:5000/api/works")
+    .then(res => {
+      if(!res.ok){
+        throw new Error("API error");
+      }
+      return res.json();
+    })
+    .then(data => setWorks(data))
+    .catch(err => console.error(err));
+
+  }, []);
+
+
+  // FILTER WORKS
+  const filteredWorks = works.filter(
+    item => item.category === category
+  );
+
+
+  return (
+
+    <div className="works-page">
+
+      <h1 className="works-title">Our Works</h1>
+
+      {/* CATEGORY TABS */}
+      <div className="works-tabs">
+
+        {categories.map(cat=>(
+          <button
+            key={cat}
+            className={`tab-btn ${category===cat?"active":""}`}
+            onClick={()=>setCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+
+      </div>
+
+
+      {/* WORK GRID */}
+      <div className="works-grid">
+
+        {filteredWorks.map(work=>(
+          <div className="work-card" key={work._id}>
+
+            <img
+              src={`http://localhost:5000${work.image}`}
+              alt=""
+            />
+
+          </div>
+        ))}
+
+      </div>
+
+    </div>
+  );
+}
+
+export default Works;

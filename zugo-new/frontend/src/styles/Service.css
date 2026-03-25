@@ -1,0 +1,255 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+.service-hero{
+padding:120px 20px;
+text-align:center;
+background:#f7f7f7;
+}
+
+.service-hero h1{
+font-size:48px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.service-hero p{
+max-width:700px;
+margin:auto;
+margin-bottom:30px;
+}
+
+.cta{
+background:black;
+color:white;
+padding:14px 28px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.service-wrapper{
+padding:100px 8%;
+overflow: visible;
+}
+
+.service-title{
+text-align:center;
+font-size:36px;
+margin-bottom:60px;
+}
+
+.service-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start; /* ✅ THIS FIXES SCROLL BUG */
+  contain: layout paint;
+}
+
+/* LEFT SIDE */
+
+.service-left-title{
+font-size:22px;
+font-weight:700;
+margin-bottom:20px;
+color:#111;
+}
+
+.service-left {
+  width: 30%;
+  position: sticky;
+  top: 100px;
+  height: fit-content;   /* ✅ change */
+  align-self: flex-start; /* ✅ IMPORTANT FIX */
+}
+
+.service-option{
+padding:16px;
+border-bottom:1px solid #ddd;
+cursor:pointer;
+font-weight:500;
+transition:0.3s;
+}
+
+.service-option:hover{
+color:#4b3fff;
+}
+
+.service-option.active{
+color:#4b3fff;
+font-weight:700;
+}
+
+/* RIGHT SIDE */
+
+.service-right{
+width:70%;
+}
+
+.service-content{
+margin-bottom:80px;
+min-height: 70vh;
+}
+
+.service-banner {
+  width: 100%;
+  height: 400px; /* ✅ reduce from 400 */
+  object-fit: cover;
+}
+
+.service-content h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.service-content p{
+color:#555;
+line-height:1.7;
+max-width:700px;
+}
+
+.service-line {
+  border: none;
+  height: 2px;
+  margin: 20px auto 0;
+  width: 100%;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s ease;
+  border-radius: 10px;
+
+  /* Glow */
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6),
+              0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+/* 🔥 Hover animation */
+.service-content:hover .service-line {
+  transform: scaleX(1);
+}
+
+.service-content:hover .service-line {
+  width: 100%;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  /* HERO SECTION */
+  .service-hero {
+    padding: 80px 15px;
+  }
+
+  .service-hero h1 {
+    font-size: 32px;
+  }
+
+  .service-hero p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .cta {
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+
+  /* WRAPPER */
+  .service-wrapper {
+    padding: 60px 5%;
+    overflow: visible;
+    
+  }
+
+  .service-title {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  /* LAYOUT STACK */
+  .service-layout {
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+  }
+
+  /* LEFT SIDE (SCROLL TABS STYLE 🔥) */
+  .service-left {
+  position: sticky;
+  top: 60px; /* below navbar */
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 5px;
+  background: white; /* 👈 important */
+  border-bottom: 1px solid #eee;
+  -webkit-overflow-scrolling: touch; /* ✅ smooth mobile scroll */
+  touch-action: pan-x;               /* ✅ allow horizontal swipe */
+}
+
+  .service-left::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-option {
+  flex: 0 0 auto; /* 👈 important */
+  white-space: nowrap;
+  border: none;
+  background: #f1f1f1;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 20px;
+  transition: 0.3s;
+  pointer-events: auto;
+}
+
+.service-option.active {
+  background: #4b3fff;
+  color: white;
+}
+
+  /* RIGHT SIDE */
+  .service-right {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-content {
+    margin-bottom: 50px;
+    scroll-margin-top: 120px;
+    min-height: 60vh;
+  }
+
+  /* 🔥 IMAGE FIX */
+  .service-banner {
+    width: 100%;
+    height: auto;          /* 👈 remove fixed height */
+    max-height: 250px;     /* 👈 control size */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .service-content h3 {
+    font-size: 20px;
+  }
+
+  .service-content p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* LINE EFFECT SMALL */
+  .service-line {
+    transform: scaleX(1); /* 👈 always visible */
+    opacity: 1;
+    transform-origin: left; 
+  }
+}
