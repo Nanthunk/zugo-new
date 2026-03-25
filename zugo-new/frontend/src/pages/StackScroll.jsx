@@ -69,7 +69,7 @@ export default function StackScroll() {
 
         <picture>
           <source srcSet={SocialMediaMobile} media="(max-width: 768px)" />
-          <img className="stack-image" src={SocialMedia} alt="Social Media" />
+          <img className="stack-image" src={SocialMedia} alt="social-media" />
         </picture>
 
         <picture>
