@@ -26,26 +26,14 @@ router.get("/", async (req, res) => {
 router.post("/add", upload.single("logo"), async (req, res) => {
   try {
 
-    console.log("FILE:", req.file);
-
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded" });
     }
 
-    // ✅ CORRECT CLOUDINARY UPLOAD
-    const result = await new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        { folder: "clients" },
-        (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
-        }
-      );
-
-      stream.end(req.file.buffer);
-    });
-
-    console.log("RESULT:", result);
+    const result = await cloudinary.uploader.upload(
+      `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
+      { folder: "clients" }
+    );
 
     const newClient = new Client({
       logo: result.secure_url
