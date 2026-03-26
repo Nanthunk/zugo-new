@@ -216,7 +216,7 @@ function App() {
         <Route path="/service" element={<Service />} />
 
         {/* Hidden Admin Panel */}
-        <Route path="/clients/logo" element={<AdminClients />} />
+        <Route path="/clients/add" element={<AdminClients />} />
 
         <Route path="/works" element={<Works />} />
 
