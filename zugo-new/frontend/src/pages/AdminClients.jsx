@@ -7,33 +7,43 @@ function AdminClients() {
   const [logo, setLogo] = useState(null);
   const [clients, setClients] = useState([]);
 
+  // ✅ USE RENDER BACKEND ONLY
+  const BASE_URL = "https://zugo-new-1-oavu.onrender.com";
+
   // fetch logos
   const fetchClients = async () => {
-    const res = await axios.get("http://localhost:5000/api/clients");
-    setClients(res.data);
+    try {
+      const res = await axios.get(`${BASE_URL}/api/clients`);
+      setClients(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     fetchClients();
   }, []);
 
-  // upload logo
+  // upload logo 
   const uploadLogo = async () => {
 
     if (!logo) return alert("Choose logo first");
 
-    const formData = new FormData();
-    formData.append("logo", logo);
+    try {
+      const formData = new FormData();
+      formData.append("logo", logo);
 
-    await axios.post(
-      "http://localhost:5000/api/clients/add",
-      formData
-    );
+      await axios.post(`${BASE_URL}/api/clients/add`, formData);
 
-    alert("Logo Uploaded");
+      alert("Logo Uploaded ✅");
 
-    setLogo(null);
-    fetchClients();
+      setLogo(null);
+      fetchClients();
+
+    } catch (err) {
+      console.log(err);
+      alert("Upload failed ❌");
+    }
   };
 
   // delete logo
@@ -41,11 +51,12 @@ function AdminClients() {
 
     if (!window.confirm("Delete this logo?")) return;
 
-    await axios.delete(
-      `http://localhost:5000/api/clients/${id}`
-    );
-
-    fetchClients();
+    try {
+      await axios.delete(`${BASE_URL}/api/clients/${id}`);
+      fetchClients();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -72,10 +83,15 @@ function AdminClients() {
       <div className="admin-logos">
 
         {clients.map((item)=>(
+
           <div key={item._id} className="logo-card">
 
             <img
-              src={`http://localhost:5000/uploads/${item.logo}`}
+              src={
+                item.logo.startsWith("http")
+                  ? item.logo
+                  : `${BASE_URL}/uploads/${item.logo}`
+              }
               alt="client"
             />
 
@@ -87,6 +103,7 @@ function AdminClients() {
             </button>
 
           </div>
+
         ))}
 
       </div>

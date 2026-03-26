@@ -8,89 +8,84 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Clients() {
 
-const [logos,setLogos] = useState([]);
-const rowsRef = useRef([]);
-const BASE_URL = "https://zugo-new-1-oavu.onrender.com";
+  const [logos, setLogos] = useState([]);
+  const rowsRef = useRef([]);
 
-useEffect(()=>{
+  // ✅ SAME RENDER BACKEND
+  const BASE_URL = "https://zugo-new-1-oavu.onrender.com";
 
-axios.get(`${BASE_URL}/api/clients`)
-.then(res=>{
-setLogos(res.data);
-});
+  useEffect(() => {
+    axios.get(`${BASE_URL}/api/clients`)
+      .then(res => setLogos(res.data))
+      .catch(err => console.log(err));
+  }, []);
 
-},[]);
+  useEffect(() => {
 
+    rowsRef.current.forEach((row, index) => {
 
-useEffect(()=>{
+      gsap.to(row, {
+        x: index % 2 === 0 ? -150 : 150,
+        scrollTrigger: {
+          trigger: row,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
 
-rowsRef.current.forEach((row,index)=>{
+    });
 
-gsap.to(row,{
-x: index % 2 === 0 ? -150 : 150,
-scrollTrigger:{
-trigger: row,
-start:"top bottom",
-end:"bottom top",
-scrub:true
-}
-});
+  }, [logos]);
 
-});
+  // split logos into rows of 5
+  const rows = [];
+  for (let i = 0; i < logos.length; i += 5) {
+    rows.push(logos.slice(i, i + 5));
+  }
 
-},[logos]);
+  return (
+    <section className="clients">
 
+      <div className="clients-header">
+        <h1>Our Trusted Clients</h1>
+        <p>
+          We proudly collaborate with 30+ Clients who have successfully elevated their Brand Presence and Grow their Online Identity with Us.
+        </p>
+      </div>
 
-// split logos into rows of 5
-const rows = [];
-for(let i=0;i<logos.length;i+=5){
-rows.push(logos.slice(i,i+5));
-}
+      <div className="clients-container">
 
-return (
+        {rows.map((row, rowIndex) => (
 
-<section className="clients">
+          <div
+            key={rowIndex}
+            className="logo-row"
+            ref={el => rowsRef.current[rowIndex] = el}
+          >
 
-    {/* TITLE SECTION */}
-  <div className="clients-header">
-    <h1>Our Trusted Clients</h1>
-    <p>
-      We proudly collaborate with 30+ Clients who have successfully elevated their Brand Presence and Grow their Online Identity with Us.
-    </p>
-  </div>
+            {row.map((item) => (
 
-<div className="clients-container">
+              <img
+                key={item._id}
+                src={
+                  item.logo.startsWith("http")
+                    ? item.logo
+                    : `${BASE_URL}/uploads/${item.logo}`
+                }
+                alt="client"
+              />
 
-    
+            ))}
 
-{rows.map((row,rowIndex)=>(
+          </div>
 
-<div
-key={rowIndex}
-className="logo-row"
-ref={el => rowsRef.current[rowIndex] = el}
->
+        ))}
 
-{row.map((item)=>(
+      </div>
 
-
-<img
-  key={item._id}
-  src={`${BASE_URL}/uploads/${item.logo}`}
-  alt="client"
-/>
-))}
-
-</div>
-
-))}
-
-</div>
-
-</section>
-
-);
-
+    </section>
+  );
 }
 
 export default Clients;
