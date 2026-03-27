@@ -45,86 +45,66 @@ function WorksAdmin() {
   };
 
   return (
-    <div style={{ padding: "100px" }}>
+  <div className="works-container">
 
-      <h2>Works Admin Panel</h2>
+    <h2>Works Admin Panel</h2>
 
-      <form onSubmit={submitWork} style={{ marginBottom: "40px" }}>
-        <input
-          type="file"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
+    <form onSubmit={submitWork} style={{ marginBottom: "40px" }}>
+      <input
+        type="file"
+        onChange={(e) => setImage(e.target.files[0])}
+      />
 
-        <select onChange={(e) => setCategory(e.target.value)}>
-          <option>Select Category</option>
-          <option>Real Estate Marketing</option>
-          <option>Website Design</option>
-          <option>Graphics Design</option>
-          <option>Reels</option>
-          <option>Others</option>
-        </select>
+      <select onChange={(e) => setCategory(e.target.value)}>
+        <option>Select Category</option>
+        <option>Real Estate Marketing</option>
+        <option>Website Design</option>
+        <option>Graphics Design</option>
+        <option>Reels</option>
+        <option>Others</option>
+      </select>
 
-        <button type="submit">Upload Work</button>
-      </form>
+      <button type="submit">Upload Work</button>
+    </form>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4,1fr)",
-        gap: "20px"
-      }}>
+    <div className="works-grid">
 
-        {works.map(work => {
+      {works.map(work => {
 
-          const isVideo =
-            work.image.endsWith(".mp4") ||
-            work.image.endsWith(".webm");
+        const isVideo =
+          work.image.endsWith(".mp4") ||
+          work.image.endsWith(".webm");
 
-          return (
-            <div key={work._id} style={{ textAlign: "center" }}>
+        return (
+          <div key={work._id} className="work-card">
 
-              {isVideo ? (
-                <video
-                  src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
-                  controls
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover"
-                  }}
-                />
-              ) : (
-                <img
-                  src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover"
-                  }}
-                />
-              )}
+            {isVideo ? (
+              <video
+                src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
+                controls
+                className="work-media"
+              />
+            ) : (
+              <img
+                src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
+                alt=""
+                className="work-media"
+              />
+            )}
 
-              <button
-                onClick={() => deleteWork(work._id)}
-                style={{
-                  marginTop: "10px",
-                  background: "red",
-                  color: "white",
-                  border: "none",
-                  padding: "8px 15px",
-                  cursor: "pointer"
-                }}
-              >
-                Delete
-              </button>
+            <button
+              onClick={() => deleteWork(work._id)}
+              className="delete-btn"
+            >
+              Delete
+            </button>
 
-            </div>
-          );
-        })}
+          </div>
+        );
+      })}
 
-      </div>
     </div>
-  );
-}
+  </div>
+)};
 
 export default WorksAdmin;
