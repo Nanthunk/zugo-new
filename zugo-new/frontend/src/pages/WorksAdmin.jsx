@@ -8,7 +8,7 @@ function WorksAdmin() {
 
   // LOAD WORKS
   const loadWorks = () => {
-    fetch("http://localhost:5000/api/works")
+    fetch("https://zugo-new-1-oavu.onrender.com/api/works")
       .then(res => res.json())
       .then(data => setWorks(data))
       .catch(err => console.error(err));
@@ -27,7 +27,7 @@ function WorksAdmin() {
     formData.append("image", image);
     formData.append("category", category);
 
-    await fetch("http://localhost:5000/api/works", {
+    await fetch("https://zugo-new-1-oavu.onrender.com/api/works", {
       method: "POST",
       body: formData
     });
@@ -37,7 +37,7 @@ function WorksAdmin() {
 
   // DELETE WORK
   const deleteWork = async (id) => {
-    await fetch(`http://localhost:5000/api/works/${id}`, {
+    await fetch(`https://zugo-new-1-oavu.onrender.com/api/works/${id}`, {
       method: "DELETE"
     });
 
@@ -84,7 +84,7 @@ function WorksAdmin() {
 
               {isVideo ? (
                 <video
-                  src={`http://localhost:5000${work.image}`}
+                  src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
                   controls
                   style={{
                     width: "100%",
@@ -94,7 +94,7 @@ function WorksAdmin() {
                 />
               ) : (
                 <img
-                  src={`http://localhost:5000${work.image}`}
+                  src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
                   alt=""
                   style={{
                     width: "100%",
