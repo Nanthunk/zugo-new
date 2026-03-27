@@ -17,7 +17,7 @@ function Works() {
   // LOAD WORKS
   useEffect(() => {
 
-    fetch("http://localhost:5000/api/works")
+    fetch("https://zugo-new-1-oavu.onrender.com/api/works")
     .then(res => {
       if(!res.ok){
         throw new Error("API error");
@@ -65,7 +65,7 @@ function Works() {
           <div className="work-card" key={work._id}>
 
             <img
-              src={`http://localhost:5000${work.image}`}
+              src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
               alt=""
             />
 
