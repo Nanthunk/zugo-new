@@ -72,39 +72,44 @@ function WorksAdmin() {
 
       {works.map(work => {
 
-        
-          const isVideo =
-  work.image.includes(".mp4") ||
-  work.image.includes(".webm");
+  const isVideo =
+    work.type === "video" || 
+    work.image.match(/\.(mp4|webm|mov|avi)$/i);
 
-        return (
-          <div key={work._id} className="work-card">
+  return (
+    <div key={work._id} className="work-card">
 
-  {isVideo ? (
-  <video
-    src={work.image}
-    className="work-media"
-    onClick={() => setSelectedMedia({ type: "video", url: work.image })}
-  />
-) : (
-  <img
-    src={work.image}
-    alt=""
-    className="work-media"
-    onClick={() => setSelectedMedia({ type: "image", url: work.image })}
-  />
-)}
+      {isVideo ? (
+        <video
+          src={work.image}
+          className="work-media"
+          controls
+          onClick={() =>
+            setSelectedMedia({ type: "video", url: work.image })
+          }
+        />
+      ) : (
+        <img
+          src={work.image}
+          alt=""
+          className="work-media"
+          onClick={() =>
+            setSelectedMedia({ type: "image", url: work.image })
+          }
+        />
+      )}
 
-  <button
-    onClick={() => deleteWork(work._id)}
-    className="delete-btn"
-  >
-    Delete
-  </button>
+      {/* ✅ ALWAYS OUTSIDE CONDITION */}
+      <button
+        onClick={() => deleteWork(work._id)}
+        className="delete-btn"
+      >
+        Delete
+      </button>
 
-</div>
-        );
-      })}
+    </div>
+  );
+})}
 
     </div>
 
