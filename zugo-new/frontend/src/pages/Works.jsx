@@ -4,7 +4,7 @@ import "../styles/Works.css";
 function Works() {
 
   const [works,setWorks] = useState([]);
-  const [category,setCategory] = useState("Real Estate Marketing");
+  const [category,setCategory] = useState("Digital Marketing");
 
   const categories = [
     "Digital Marketing",
