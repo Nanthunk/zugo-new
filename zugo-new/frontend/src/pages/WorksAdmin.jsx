@@ -70,38 +70,47 @@ function WorksAdmin() {
 
     <div className="works-grid">
 
-      {works.map((work) => {
+      {works.map((work) => (
+  <div key={work._id} className="work-card">
 
-  const isVideo = work.type === "video";
-
-  return (
-    <div key={work._id} className="work-card">
-
-      {isVideo ? (
-        <video
-          src={work.image}
-          className="work-media"
-          controls
-        />
-      ) : (
-        <img
-          src={work.image}
-          alt=""
-          className="work-media"
-        />
-      )}
-
-      {/* ✅ ALWAYS KEEP BUTTON OUTSIDE */}
-      <button
-        className="delete-btn"
-        onClick={() => deleteWork(work._id)}
+    {work.image.includes("/video/") ? (
+      <video
+        className="work-media"
+        controls
+        muted
+        onClick={() =>
+          setSelectedMedia({
+            url: work.image,
+            type: "video"
+          })
+        }
       >
-        Delete
-      </button>
+        <source src={work.image} type="video/mp4" />
+      </video>
+    ) : (
+      <img
+        src={work.image}
+        alt=""
+        className="work-media"
+        onClick={() =>
+          setSelectedMedia({
+            url: work.image,
+            type: "image"
+          })
+        }
+      />
+    )}
 
-    </div>
-  );
-})}
+    <button
+      className="delete-btn"
+      onClick={() => deleteWork(work._id)}
+    >
+      Delete
+    </button>
+
+  </div>
+))}
+ 
 
     </div>
 
@@ -122,6 +131,8 @@ function WorksAdmin() {
         className="modal-content"
       />
     )}
+
+    
 
   </div>
 )}
