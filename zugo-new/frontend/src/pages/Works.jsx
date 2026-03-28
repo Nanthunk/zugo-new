@@ -65,7 +65,7 @@ function Works() {
           <div className="work-card" key={work._id}>
 
             <img
-              src={`https://zugo-new-1-oavu.onrender.com${work.image}`}
+              src={work.image}
               alt=""
             />
 

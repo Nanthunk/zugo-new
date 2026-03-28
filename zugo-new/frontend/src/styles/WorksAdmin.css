@@ -1,32 +1,123 @@
 .works-container {
-  padding: 100px;
-  margin-top: 20%;
+  padding: 40px 60px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
+.works-container h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.works-container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.works-container input,
+.works-container select,
+.works-container button {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* GRID */
 .works-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 25px;
 }
 
+/* CARD */
 .work-card {
-  text-align: center;
+  background: #fff;
+  padding: 15px;
+  padding-bottom: 60px; /* 🔥 space for button */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+  position: relative; /* 🔥 for button */
 }
 
+/* IMAGE / VIDEO (ORIGINAL RATIO) */
 .work-media {
   width: 100%;
-  height: 220px;
-  object-fit: contain;   /* ✅ IMPORTANT FIX */
-  background: #f5f5f5;   /* optional (nice look) */
+  height: auto;        /* 🔥 keeps original ratio */
+  object-fit: contain; /* 🔥 no crop */
   border-radius: 8px;
+  display: block;
 }
 
+/* DELETE BUTTON */
 .delete-btn {
-  margin-top: 10px;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+
   background: red;
   color: white;
   border: none;
-  padding: 8px 15px;
-  cursor: pointer;
+  padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+/* MODAL BACKGROUND */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* IMAGE / VIDEO INSIDE MODAL */
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .works-container {
+    padding: 20px;
+  }
+
+  .works-container h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .works-container form {
+    flex-direction: column;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+
 }

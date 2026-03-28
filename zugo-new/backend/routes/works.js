@@ -2,35 +2,8 @@ import express from "express";
 const router = express.Router();
 
 import Work from "../models/work.js";
-import multer from "multer";
-import path from "path";
-import fs from "fs"; // ✅ IMPORTANT
-
-// STORAGE
-const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  }
-});
-
-// FILE FILTER (image + video)
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype.startsWith("image/") ||
-    file.mimetype.startsWith("video/")
-  ) {
-    cb(null, true);
-  } else {
-    cb(new Error("Only images and videos allowed"), false);
-  }
-};
-
-const upload = multer({
-  storage,
-  fileFilter
-});
-
+import upload from "../middleware/multer.js"; // ✅ use your multer
+import cloudinary from "../config/cloudinary.js"; // ✅ cloudinary
 
 // ==========================
 // GET ALL WORKS
@@ -46,16 +19,28 @@ router.get("/", async (req, res) => {
 
 
 // ==========================
-// ADD WORK
+// ADD WORK (UPLOAD TO CLOUDINARY)
 // ==========================
 router.post("/", upload.single("image"), async (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({ error: "Upload failed" });
-    }
+
+    const streamUpload = (buffer) => {
+      return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "works" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        stream.end(buffer);
+      });
+    };
+
+    const result = await streamUpload(req.file.buffer);
 
     const newWork = new Work({
-      image: `/uploads/${req.file.filename}`,
+      image: result.secure_url,
       category: req.body.category
     });
 
@@ -68,7 +53,6 @@ router.post("/", upload.single("image"), async (req, res) => {
   }
 });
 
-
 // ==========================
 // DELETE WORK
 // ==========================
@@ -80,18 +64,20 @@ router.delete("/:id", async (req, res) => {
       return res.status(404).json({ message: "Work not found" });
     }
 
-    const filePath = path.join(process.cwd(), work.image);
+    // 🔥 extract public_id from URL
+    const parts = work.image.split("/");
+    const fileName = parts[parts.length - 1];
+    const publicId = "works/" + fileName.split(".")[0];
 
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-    }
+    await cloudinary.uploader.destroy(publicId, {
+      resource_type: "auto"
+    });
 
     await Work.findByIdAndDelete(req.params.id);
 
     res.json({ message: "Deleted successfully" });
 
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: err.message });
   }
 });

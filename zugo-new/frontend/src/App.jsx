@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Mail, Instagram } from "lucide-react";
 
-
 import Navbar from "./components/Navbar";
 import StackScroll from "./pages/StackScroll";
 import Clients from "./pages/Clients";
@@ -23,49 +22,42 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
-
   const skillsRef = useRef(null);
 
   useEffect(() => {
+    if (window.location.pathname !== "/") return;
 
-  // ✅ ONLY run GSAP on homepage
-  if (window.location.pathname !== "/") return;
+    const items = gsap.utils.toArray(".skills-list h2");
 
-  const items = gsap.utils.toArray(".skills-list h2");
-
-  gsap.to(".skills-top", {
-    opacity: 1,
-    duration: 1,
-    scrollTrigger: {
-      trigger: skillsRef.current,
-      start: "top 70%"
-    }
-  });
-
-  items.forEach((item, i) => {
-    ScrollTrigger.create({
-      trigger: item,
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => setActive(i),
-      onEnterBack: () => setActive(i)
+    gsap.to(".skills-top", {
+      opacity: 1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: skillsRef.current,
+        start: "top 70%",
+      },
     });
-  });
 
-  function setActive(index) {
-    items.forEach(el => el.classList.remove("active"));
-    items[index].classList.add("active");
-  }
+    items.forEach((item, i) => {
+      ScrollTrigger.create({
+        trigger: item,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setActive(i),
+        onEnterBack: () => setActive(i),
+      });
+    });
 
-}, []);
+    function setActive(index) {
+      items.forEach((el) => el.classList.remove("active"));
+      items[index].classList.add("active");
+    }
+  }, []);
 
   return (
-
     <div className="app">
-
       {/* Hero Section */}
       <section className="hero">
-
         <h1 className="hero-title">
           <span>Z</span>
           <span>U</span>
@@ -87,35 +79,20 @@ function HomePage() {
         >
           Scroll Down to Explore ↓
         </div>
-
       </section>
 
-
-      {/* Image Scroll Animation Section */}
       <StackScroll />
 
-
-      {/* Welcome Section */}
+      {/* Welcome */}
       <div className="welcome">
         <h1>Welcome to Zugo</h1>
         <p>
-          Where your brand's next big chapter begins. We're here to fuel your growth with
-          <br />
-           Sharp Ideas, Smart Strategies, and Unstoppable Digital Energy.
+          Where your brand's next big chapter begins.
         </p>
-
-        <h1>What We Are</h1>
-        <p>Zugo is a forward-thinking digital marketing agency built to accelerate brands in the ever-evolving online world.<br />
-         We blend creativity with data to craft strategies that don't just reach audiences<br />
-         — they move them.</p>
       </div>
 
-      
-
-
-      {/* Skills Section */}
+      {/* Skills */}
       <section className="skills" ref={skillsRef}>
-
         <p className="skills-top">OUR SKILLS COVER</p>
 
         <div className="skills-list">
@@ -126,116 +103,75 @@ function HomePage() {
           <h2>Multi-Platform Audience Targeting</h2>
           <h2>Conversion Rate Optimization (CRO)</h2>
         </div>
-
       </section>
 
-
+      {/* MD Section */}
       <section className="aboutmd-wrapper">
+        <div className="aboutmd-container">
+          <div className="aboutmd-image">
+            <img src={MD} alt="Managing Director" />
+          </div>
 
-      <div className="aboutmd-container">
+          <div className="aboutmd-content">
+            <h2>About Our MD</h2>
+            <h3>Mr. Bharathraj CR</h3>
 
-        {/* LEFT IMAGE */}
-        <div className="aboutmd-image">
-          <img 
-            src={MD} 
-            alt="Managing Director"
-          />
-        </div>
+            <p>
+              Our Managing Director is a visionary leader...
+            </p>
 
-        {/* RIGHT CONTENT */}
-        <div className="aboutmd-content">
-
-          <h2>About Our MD</h2>
-
-          <h3>Mr. Bharathraj CR</h3>
-
-          <p>
-            Our Managing Director is a visionary leader with a strong passion 
-            for digital innovation and business growth. With years of experience 
-            in web development, branding, and digital marketing, he has helped 
-            multiple brands scale successfully in the digital space.
-          </p>
-
-          <p>
-            His leadership drives the company forward with creativity, 
-            strategy, and a commitment to delivering high-quality solutions 
-            for every client.
-          </p>
-
-          
-
-           <div className="md-contact">
-
-             <div className="contact-item">
-               <Mail size={18} />
-               <a href="mailto:zugoprivatelimited@gmail.com">
-                zugochairman@gmail.com
-               </a>
-             </div>
-
+            <div className="md-contact">
               <div className="contact-item">
-                <Instagram size={18} />
-                <a href="https://www.instagram.com/zugo_chairman?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer">
-                 @zugo_chairman
+                <Mail size={18} />
+                <a href="mailto:zugochairman@gmail.com">
+                  zugochairman@gmail.com
                 </a>
               </div>
 
-           </div>
-
+              <div className="contact-item">
+                <Instagram size={18} />
+                <a
+                  href="https://www.instagram.com/zugo_chairman"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @zugo_chairman
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        
-
-      </div>
-
-    </section>
-
-
-      {/* Clients Section */}
       <Clients />
-
-     
     </div>
   );
 }
 
-
 function App() {
-
   return (
-
     <Router>
+      <div className="page-container"> {/* ✅ MAIN FIX */}
 
-      <Navbar />
+        <Navbar />
 
-      <Routes>
+        <div className="content"> {/* ✅ MAIN FIX */}
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/service" element={<Service />} />
+            <Route path="/clients/add" element={<AdminClients />} />
+            <Route path="/works" element={<Works />} />
+            <Route path="/works/add" element={<WorksAdmin />} />
+            <Route path="/packages" element={<Packages />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
 
-        {/* Main Website */}
-        <Route path="/" element={<HomePage />} />
+        <Footer />
 
-        <Route path="/service" element={<Service />} />
-
-        {/* Hidden Admin Panel */}
-        <Route path="/clients/add" element={<AdminClients />} />
-
-        <Route path="/works" element={<Works />} />
-
-        <Route path="/works/add" element={<WorksAdmin />} />   
-
-        <Route path="/packages" element={<Packages />} />
-
-        <Route path="/contact" element={<Contact />} />
-
-      </Routes>
-
-       {/* Footer */}
-      <Footer />
-
-
+      </div>
     </Router>
-
   );
-
 }
 
 export default App;

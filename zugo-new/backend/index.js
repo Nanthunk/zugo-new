@@ -41,7 +41,7 @@ app.use(
 app.use("/api/clients", clientRoutes);
 app.use("/api/works", worksRoutes);
 app.use("/api/contact", contactRoutes);
-app.use("/api/upload", uploadRoute);
+// app.use("/api/upload", uploadRoute);
 
 /* ---------------- TEST ROUTE ---------------- */
 
