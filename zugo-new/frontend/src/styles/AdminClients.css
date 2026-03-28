@@ -1,44 +1,55 @@
-.admin-clients{
-padding:40px;
-margin-top:70px;
+.admin-clients {
+  padding: 40px;
+  margin-top: 70px;
 }
 
-.upload-section{
-margin:20px 0;
+.upload-section {
+  margin: 20px 0;
 }
 
-.upload-section input{
-margin-right:10px;
+.upload-section input {
+  margin-right: 10px;
 }
 
-.admin-logos{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:30px;
-margin-top:40px;
+.admin-logos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  margin-top: 40px;
 }
 
-.logo-card{
-text-align:center;
+.logo-card {
+  text-align: center;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  display: flex;               /* ✅ FIX */
+  flex-direction: column;      /* ✅ FIX */
+  align-items: center;         /* ✅ FIX */
+  justify-content: space-between;
 }
 
-.logo-card img{
-width:120px;
-height:80px;
-object-fit:contain;
-background:#f5f5f5;
-padding:10px;
-border-radius:6px;
+.logo-card img {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 6px;
+  display: block;              /* ✅ FIX */
 }
 
-.delete-btn{
-margin-top:10px;
-background:red;
-color:white;
-border:none;
-padding:6px 12px;
-cursor:pointer;
-border-radius:4px;
+.delete-btn {
+  position: static !important;   /* 🔥 IMPORTANT FIX */
+  margin-top: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 /* ----------- TABLET VIEW ----------- */
@@ -49,7 +60,7 @@ border-radius:4px;
   }
 
   .admin-logos {
-    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
@@ -58,7 +69,6 @@ border-radius:4px;
     height: 70px;
   }
 }
-
 
 /* ----------- MOBILE VIEW ----------- */
 @media (max-width: 768px) {
@@ -78,7 +88,7 @@ border-radius:4px;
   }
 
   .admin-logos {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-top: 25px;
   }
@@ -95,12 +105,11 @@ border-radius:4px;
   }
 }
 
-
 /* ----------- SMALL MOBILE ----------- */
 @media (max-width: 480px) {
 
   .admin-logos {
-    grid-template-columns: 1fr; /* 1 per row */
+    grid-template-columns: 1fr;
   }
 
   .logo-card img {
