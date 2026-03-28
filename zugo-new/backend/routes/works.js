@@ -43,9 +43,10 @@ router.post("/", upload.single("image"), async (req, res) => {
     const result = await streamUpload(req.file.buffer);
 
     const newWork = new Work({
-      image: result.secure_url,
-      category: req.body.category
-    });
+  image: result.secure_url,
+  category: req.body.category,
+  type: result.resource_type // 🔥 ADD THIS
+});
 
     await newWork.save();
 

@@ -70,11 +70,9 @@ function WorksAdmin() {
 
     <div className="works-grid">
 
-      {works.map(work => {
+      {works.map((work) => {
 
-  const isVideo =
-    work.type === "video" || 
-    work.image.match(/\.(mp4|webm|mov|avi)$/i);
+  const isVideo = work.type === "video";
 
   return (
     <div key={work._id} className="work-card">
@@ -84,25 +82,19 @@ function WorksAdmin() {
           src={work.image}
           className="work-media"
           controls
-          onClick={() =>
-            setSelectedMedia({ type: "video", url: work.image })
-          }
         />
       ) : (
         <img
           src={work.image}
           alt=""
           className="work-media"
-          onClick={() =>
-            setSelectedMedia({ type: "image", url: work.image })
-          }
         />
       )}
 
-      {/* ✅ ALWAYS OUTSIDE CONDITION */}
+      {/* ✅ ALWAYS KEEP BUTTON OUTSIDE */}
       <button
-        onClick={() => deleteWork(work._id)}
         className="delete-btn"
+        onClick={() => deleteWork(work._id)}
       >
         Delete
       </button>
