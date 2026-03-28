@@ -63,10 +63,13 @@ function Works() {
         {filteredWorks.map(work=>(
           <div className="work-card" key={work._id}>
 
-            <img
-              src={work.image}
-              alt=""
-            />
+            {work.image.includes("/video/") ? (
+  <video width="250" controls muted>
+    <source src={work.image} type="video/mp4" />
+  </video>
+) : (
+  <img src={work.image} alt="" />
+)}
 
             
 
