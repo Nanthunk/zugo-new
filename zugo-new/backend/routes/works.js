@@ -25,17 +25,20 @@ router.post("/", upload.single("image"), async (req, res) => {
   try {
 
     const streamUpload = (buffer) => {
-      return new Promise((resolve, reject) => {
-        const stream = cloudinary.uploader.upload_stream(
-          { folder: "works" },
-          (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
-          }
-        );
-        stream.end(buffer);
-      });
-    };
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { 
+        folder: "works",
+        resource_type: "auto" // 🔥 THIS FIX
+      },
+      (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      }
+    );
+    stream.end(buffer);
+  });
+};
 
     const result = await streamUpload(req.file.buffer);
 
