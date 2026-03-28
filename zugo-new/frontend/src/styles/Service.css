@@ -2,7 +2,7 @@
 .service-hero {
   text-align: center;
   padding: 120px 20px 80px;
-  background: linear-gradient(135deg, #4b3fff, #5cff82);
+  background: linear-gradient(135deg, #e95151, #ecff5c, #f7b66c);
   color: white;
 }
 
@@ -62,7 +62,7 @@
   border: none;
   margin-top: 25px;
   width: 0%;
-  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  background: linear-gradient(90deg, #06e755, #f6d13b, #6366f1 );
   border-radius: 10px;
   transition: width 1s ease;
 

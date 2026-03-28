@@ -27,11 +27,11 @@ function Navbar() {
       {/* NAVIGATION LINKS */}
       <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
 
-        <li><NavLink to="/" end>Home</NavLink></li>
-        <li><NavLink to="/service">Services</NavLink></li>
-        <li><NavLink to="/works">Our Works</NavLink></li>
-        <li><NavLink to="/packages">Packages</NavLink></li>
-        <li><NavLink to="/contact">Contact</NavLink></li>
+        <li><NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink></li>
+        <li><NavLink to="/service" onClick={() => setMenuOpen(false)}>Services</NavLink></li>
+        <li><NavLink to="/works" onClick={() => setMenuOpen(false)}>Our Works</NavLink></li>
+        <li><NavLink to="/packages" onClick={() => setMenuOpen(false)}>Packages</NavLink></li>
+        <li><NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink></li>
 
         {/* Mobile Button */}
         <NavLink to="/contact">

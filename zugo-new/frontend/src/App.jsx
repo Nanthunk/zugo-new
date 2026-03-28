@@ -87,8 +87,14 @@ function HomePage() {
       <div className="welcome">
         <h1>Welcome to Zugo</h1>
         <p>
-          Where your brand's next big chapter begins.
+          Welcome to Zugo, your one-stop solution for digital growth and creative excellence. We help businesses build a strong online presence through smart marketing, stunning design, and powerful web solutions. Our goal is simple — to turn your ideas into impactful digital experiences.
         </p>
+      </div>
+
+      <div className="welcome">
+        <h1>Who are We</h1>
+        <p>
+          We are a team of passionate creatives, developers, and marketers dedicated to helping brands succeed online. With a blend of strategy, design, and technology, we craft solutions that deliver real results. At Zugo, we don’t just work for you ~ We Grow with you.        </p>
       </div>
 
       {/* Skills */}
@@ -117,7 +123,7 @@ function HomePage() {
             <h3>Mr. Bharathraj CR</h3>
 
             <p>
-              Our Managing Director is a visionary leader...
+              The Founder & Managing Director of Zugo Private Limited, combines strong academic knowledge with real-world marketing expertise. With qualifications in BBA CA, MA, and MSc in Digital Marketing, he brings a unique perspective to the industry. He leads a skilled team delivering creative, data-driven marketing solutions. His client-first approach ensures impactful results and long-term brand growth.
             </p>
 
             <div className="md-contact">

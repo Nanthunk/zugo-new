@@ -79,30 +79,30 @@ const ServiceBlock = ({ title, items }) => {
 
 const Service = () => {
   const digitalServices = [
-    { title: "Social Media Marketing", image: SocialMedia, description: "We build engaging campaigns that grow your brand." },
-    { title: "Search Engine Optimization", image: SEO, description: "Improve rankings and drive organic traffic." },
-    { title: "Pay Per Click Advertising", image: PayAds, description: "Optimized ads for maximum ROI." },
-    { title: "Content Marketing & Blogging", image: Blog, description: "Creative storytelling for your brand." },
-    { title: "Email Marketing", image: Email, description: "Automation strategies for conversions." },
-    { title: "Influencer Marketing", image: Influencer, description: "Boost reach using influencers." },
-    { title: "ORM", image: ORM, description: "Manage your online reputation." },
-    { title: "WhatsApp Marketing", image: Wtsapp, description: "Direct user engagement strategies." }
+    { title: "Social Media Marketing", image: SocialMedia, description: "We help your brand grow across platforms like Instagram, Facebook, and LinkedIn with engaging content and strategic campaigns. Our focus is on building audience trust, increasing engagement, and driving real business results. From content creation to ad management, we handle everything end-to-end." },
+    { title: "Search Engine Optimization", image: SEO, description: "We help your brand grow across platforms like Instagram, Facebook, and LinkedIn with engaging content and strategic campaigns. Our focus is on building audience trust, increasing engagement, and driving real business results. From content creation to ad management, we handle everything end-to-end." },
+    { title: "Pay Per Click Advertising", image: PayAds, description: "Get instant traffic and leads with targeted ad campaigns on Google and social media platforms. We create high-converting ads, optimize budgets, and track performance to ensure maximum ROI. Every click is optimized to bring you closer to your business goals." },
+    { title: "Content Marketing & Blogging", image: Blog, description: "Get instant traffic and leads with targeted ad campaigns on Google and social media platforms. We create high-converting ads, optimize budgets, and track performance to ensure maximum ROI. Every click is optimized to bring you closer to your business goals." },
+    { title: "Email Marketing", image: Email, description: "Reach your audience directly with personalized and impactful email campaigns. We design and automate email sequences that nurture leads and boost conversions. From newsletters to promotional campaigns, we ensure higher open and click rates." },
+    { title: "Influencer Marketing", image: Influencer, description: "Reach your audience directly with personalized and impactful email campaigns. We design and automate email sequences that nurture leads and boost conversions. From newsletters to promotional campaigns, we ensure higher open and click rates." },
+    { title: "ORM", image: ORM, description: "Protect and enhance your brand’s online reputation with strategic monitoring and response. We manage reviews, feedback, and brand mentions across platforms. Build trust and maintain a positive brand image in the digital space." },
+    { title: "WhatsApp Marketing", image: Wtsapp, description: "Connect with your customers instantly through personalized WhatsApp campaigns. We help you send updates, offers, and notifications directly to your audience. Fast, direct, and highly effective communication for better conversions." }
   ];
 
   const webServices = [
-    { title: "Business Website", image: Business, description: "Professional websites for growth." },
-    { title: "Ecommerce Website", image: Ecommerce, description: "High converting stores." },
-    { title: "Landing Pages", image: Landing, description: "Conversion focused pages." },
-    { title: "Portfolio Websites", image: Portfolio, description: "Showcase your work beautifully." }
+    { title: "Business Website", image: Business, description: "We design professional and responsive websites that represent your brand perfectly. Focused on user experience, speed, and performance to convert visitors into customers. A strong digital presence for your business growth." },
+    { title: "Ecommerce Website", image: Ecommerce, description: "Launch your online store with a seamless shopping experience and secure payment integration. We build scalable and user-friendly e-commerce platforms tailored to your business. Designed to maximize sales and customer satisfaction." },
+    { title: "Landing Pages", image: Landing, description: "High-converting landing pages designed for campaigns, ads, and lead generation. We focus on clean design, clear messaging, and strong call-to-actions. Perfect for turning visitors into leads or customers." },
+    { title: "Portfolio Websites", image: Portfolio, description: "Showcase your work beautifully with professional portfolio websites. We create visually stunning platforms that highlight your skills and achievements." }
   ];
 
   const brandingServices = [
-    { title: "Premium Branding", image: Branding, description: "Unique brand identity." },
-    { title: "Brand Identity", image: Brand, description: "Complete branding kit." },
-    { title: "Social Media Kit", image: SMK, description: "Modern UI kits." },
-    { title: "Creative Ads", image: CrAds, description: "High impact creatives." },
-    { title: "Performance Assets", image: perform, description: "Marketing materials." },
-    { title: "Motion Graphics", image: MGReels, description: "Reels & animations." }
+    { title: "Premium Branding", image: Branding, description: "High-converting landing pages designed for campaigns, ads, and lead generation. We focus on clean design, clear messaging, and strong call-to-actions. Perfect for turning visitors into leads or customers." },
+    { title: "Brand Identity", image: Brand, description: "From logos to color palettes, we craft a consistent and unique brand identity. Everything is designed to reflect your business values and personality. Make your brand instantly recognizable." },
+    { title: "Social Media Kit", image: SMK, description: "Get ready-to-use social media designs that maintain a consistent brand look. Includes templates, highlights, banners, and post designs. Perfect for maintaining a professional and cohesive online presence." },
+    { title: "Creative Ads", image: CrAds, description: "Get ready-to-use social media designs that maintain a consistent brand look. Includes templates, highlights, banners, and post designs. Perfect for maintaining a professional and cohesive online presence." },
+    { title: "Performance Assets", image: perform, description: "Design assets optimized for marketing performance and conversions. From banners to ad creatives, everything is built with data-driven strategy. Boost your campaign results with high-quality visuals." },
+    { title: "Motion Graphics", image: MGReels, description: "Bring your brand to life with engaging animations and motion visuals. Perfect for ads, reels, and promotional videos. Capture attention quickly and deliver your message effectively." }
   ];
 
   return (
