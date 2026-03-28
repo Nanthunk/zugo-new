@@ -59,11 +59,10 @@ function WorksAdmin() {
 
       <select onChange={(e) => setCategory(e.target.value)}>
         <option>Select Category</option>
+        <option>Digital Marketing</option>
         <option>Real Estate Marketing</option>
         <option>Website Design</option>
         <option>Graphics Design</option>
-        <option>Reels</option>
-        <option>Others</option>
       </select>
 
       <button type="submit">Upload Work</button>

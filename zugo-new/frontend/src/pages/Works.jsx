@@ -7,12 +7,11 @@ function Works() {
   const [category,setCategory] = useState("Real Estate Marketing");
 
   const categories = [
+    "Digital Marketing",
     "Real Estate Marketing",
     "Website Design",
-    "Graphics Design",
-    "Reels",
-    "Others"
-  ];
+    "Graphics Design"
+    ];
 
   // LOAD WORKS
   useEffect(() => {
