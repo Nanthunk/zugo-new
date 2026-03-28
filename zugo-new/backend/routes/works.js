@@ -64,20 +64,23 @@ router.delete("/:id", async (req, res) => {
       return res.status(404).json({ message: "Work not found" });
     }
 
-    // 🔥 extract public_id from URL
-    const parts = work.image.split("/");
-    const fileName = parts[parts.length - 1];
-    const publicId = "works/" + fileName.split(".")[0];
+    // 🔥 SAFE PUBLIC ID EXTRACT
+    const urlParts = work.image.split("/");
+    const fileWithExt = urlParts[urlParts.length - 1]; // abc123.png
+    const publicId = "works/" + fileWithExt.substring(0, fileWithExt.lastIndexOf("."));
 
+    // 🔥 DELETE FROM CLOUDINARY
     await cloudinary.uploader.destroy(publicId, {
-      resource_type: "auto"
+      resource_type: "image" // 👈 important
     });
 
+    // 🔥 DELETE FROM DB
     await Work.findByIdAndDelete(req.params.id);
 
     res.json({ message: "Deleted successfully" });
 
   } catch (err) {
+    console.error("DELETE ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 });
