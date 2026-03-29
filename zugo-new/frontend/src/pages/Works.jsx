@@ -5,6 +5,7 @@ function Works() {
 
   const [works,setWorks] = useState([]);
   const [category,setCategory] = useState("Digital Marketing");
+  const [selectedMedia, setSelectedMedia] = useState(null);
 
   const categories = [
     "Digital Marketing",
@@ -56,6 +57,27 @@ function Works() {
 
       </div>
 
+      {selectedMedia && (
+  <div className="modal" onClick={() => setSelectedMedia(null)}>
+
+    {selectedMedia.type === "video" ? (
+      <video
+        src={selectedMedia.url}
+        controls
+        autoPlay
+        className="modal-content"
+      />
+    ) : (
+      <img
+        src={selectedMedia.url}
+        alt=""
+        className="modal-content"
+      />
+    )}
+
+  </div>
+)}
+
 
       {/* WORK GRID */}
       <div className="works-grid">
@@ -64,9 +86,18 @@ function Works() {
           <div className="work-card" key={work._id}>
 
             {work.image.includes("/video/") ? (
-  <video width="250" controls muted>
-    <source src={work.image} type="video/mp4" />
-  </video>
+  <video
+  width="250"
+  muted
+  onClick={() =>
+    setSelectedMedia({
+      url: work.image,
+      type: "video"
+    })
+  }
+>
+  <source src={work.image} type="video/mp4" />
+</video>
 ) : (
   <img src={work.image} alt="" />
 )}

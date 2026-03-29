@@ -39,24 +39,24 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 
   position: relative; /* 🔥 for button */
+  height: 200px;
 }
 
 /* IMAGE / VIDEO (ORIGINAL RATIO) */
 .work-media {
   width: 100%;
-  height: auto;        /* 🔥 keeps original ratio */
-  object-fit: contain; /* 🔥 no crop */
+  height: 80%;
+  object-fit: contain;
   border-radius: 8px;
   display: block;
+
+  position: relative;  /* ✅ ADD */
+  z-index: 1;          /* ✅ ADD */
 }
 
 /* DELETE BUTTON */
 .delete-btn {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
-
+  margin-top: 50px;   /* 👈 instead of absolute */
   background: red;
   color: white;
   border: none;
