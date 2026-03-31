@@ -10,8 +10,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "ksnandhakumarcgm@gmail.com",
-    pass: "kqeovcwpdncrdwmy"
+    user: "zugopvtnetwork@gmail.com",
+    pass: "lssumbcbmuqqgoaz"
   }
 });
 
@@ -29,9 +29,9 @@ router.post("/", async (req, res) => {
     }
 
     const info = await transporter.sendMail({
-  from: `"Zugo Website" <ksnandhakumarcgm@gmail.com>`,
+  from: `"Zugo Website" <zugopvtnetwork@gmail.com>`,
   replyTo: email,
-  to: "ksnandhakumarcgm@gmail.com",
+  to: "zugopvtnetwork@gmail.com",
   subject: "New Enquiry from Zugo Website",
   html: `
     <h3>New Enquiry</h3>
@@ -59,8 +59,8 @@ router.post("/", async (req, res) => {
 router.get("/test-mail", async (req, res) => {
   try {
     await transporter.sendMail({
-      from: "nanthuzugopvt@gmail.com",
-      to: "nanthuzugopvt@gmail.com",
+      from: "zugopvtnetwork@gmail.com",
+      to: "zugopvtnetwork@gmail.com",
       subject: "Test Mail",
       text: "Working ✅"
     });

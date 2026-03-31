@@ -12,7 +12,8 @@ import Works from "./pages/Works";
 import WorksAdmin from "./pages/WorksAdmin";
 import Packages from "./pages/Packages";
 import Contact from "./pages/Contact";
-import MD from "./assets/MD.jpeg";
+import MD from "./assets/MD..jpeg";
+import Z from "../public/zugo.png";
 
 import "./App.css";
 
@@ -58,33 +59,33 @@ function HomePage() {
     <div className="app">
       {/* Hero Section */}
       <section className="hero">
-        <h1 className="hero-title">
-          <span>Z</span>
-          <span>U</span>
-          <span>G</span>
-          <span>O</span>
-        </h1>
+  <div className="hero-content">
+    <img src={Z} alt="Zugo Logo" className="hero-logo" />
 
-        <p className="hero-subtitle">
-          WE ARE A CREATIVE AGENCY, SPECIALIZED IN STRATEGY, BRANDING DESIGN, AND DEVELOPMENT.
-          <br />
-          OUR WORK IS ALWAYS AT THE INTERSECTION OF DESIGN AND TECHNOLOGY.
-        </p>
+    <h1 className="hero-title">
+      <span>Z</span>
+      <span>U</span>
+      <span>G</span>
+      <span>O</span>
+    </h1>
 
-        <div
-          className="scroll-down"
-          onClick={() =>
-            document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          Scroll Down to Explore ↓
-        </div>
-      </section>
+    <p className="hero-subtitle">
+      WE ARE A CREATIVE AGENCY, SPECIALIZED IN STRATEGY, BRANDING DESIGN, AND DEVELOPMENT.
+      <br />
+      OUR WORK IS ALWAYS AT THE INTERSECTION OF DESIGN AND TECHNOLOGY.
+    </p>
+  </div>
+
+  <div className="scroll-down">
+    Scroll Down to Explore ↓
+  </div>
+</section>
 
       <StackScroll />
 
       {/* Welcome */}
       <div className="welcome">
+        
         <h1>Welcome to Zugo</h1>
         <p>
           Welcome to Zugo, your one-stop solution for digital growth and creative excellence. We help businesses build a strong online presence through smart marketing, stunning design, and powerful web solutions. Our goal is simple — to turn your ideas into impactful digital experiences.
