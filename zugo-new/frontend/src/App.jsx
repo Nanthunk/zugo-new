@@ -88,7 +88,7 @@ function HomePage() {
         
         <h1>Welcome to Zugo</h1>
         <p>
-          Welcome to Zugo, your one-stop solution for digital growth and creative excellence. We help businesses build a strong online presence through smart marketing, stunning design, and powerful web solutions. Our goal is simple — to turn your ideas into impactful digital experiences.
+          Welcome to Zugo, your one-stop solution for digital growth and creative excellence. We help businesses build a strong online presence through smart marketing, stunning design, and powerful web solutions. Our goal is simple ~ to turn your ideas into impactful digital experiences.
         </p>
       </div>
 
@@ -103,12 +103,12 @@ function HomePage() {
         <p className="skills-top">OUR SKILLS COVER</p>
 
         <div className="skills-list">
-          <h2>Strategic Brand Positioning & Storytelling</h2>
-          <h2>Data-Driven Campaign Planning & Execution</h2>
-          <h2>Creative Content Ideation & Production</h2>
-          <h2>Performance Analytics & ROI Optimization</h2>
-          <h2>Multi-Platform Audience Targeting</h2>
-          <h2>Conversion Rate Optimization (CRO)</h2>
+          <h2>STRATEGIC BRAND POSITIONING & STORY-TELLING</h2>
+          <h2>DATA-DRIVEN CAMPAIGN PLANNING & EXECUTION</h2>
+          <h2>CREATIVE CONTENT IDEATION & PRODUCTION</h2>
+          <h2>PERFORMANCE ANALYTICS & ROI OPTIMIZATION</h2>
+          <h2>MULTI-PLATFORM AUDIENCE TARGETING</h2>
+          <h2>CONVERSION RATE OPTIMIZATION (CRO)</h2>
         </div>
       </section>
 

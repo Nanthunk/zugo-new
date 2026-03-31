@@ -65,7 +65,15 @@ const ServiceBlock = ({ title, items }) => {
             <h3>{item.title}</h3>
             <p>{item.description}</p>
 
-            <button className="service-btn">Get This Service via WhatsApp</button>
+            <button
+  className="service-btn"
+  onClick={() => window.open(
+    "https://wa.me/919585541589?text=Hi%20I%20Visit%20your%20website%20and%20I%20am%20interested%20in%20your%20services.%20Can%20you%20provide%20more%20details?",
+    "_blank"
+  )}
+>
+  Get This Service via WhatsApp
+</button>
 
             <hr className="fancy-hr hidden-hr" />
           </div>
