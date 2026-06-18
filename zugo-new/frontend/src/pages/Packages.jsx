@@ -91,9 +91,9 @@ const dronePlans = [
 
 /* WEBSITE */
 const webPlans = [
-  { name: "Basic", price: "₹10,000", recommended: false, features: ["1 Page", "Basic UI"] },
+  { name: "Basic", price: "₹15,000", recommended: false, features: ["Mobile Responsive", "Basic UI"] },
 
-  { name: "Standard", price: "₹25,000", recommended: false, features: ["5 Pages", "Responsive"] },
+  { name: "Standard", price: "₹25,000", recommended: false, features: ["Multiple Pages", "Responsive"] },
 
   { name: "Business Webpage", price: "₹40,000", recommended: false, features: ["Dynamic Site", "Admin Panel"] },
 
